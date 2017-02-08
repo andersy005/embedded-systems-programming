@@ -57,3 +57,12 @@ Debug/
 *.ewp
 *.dep
 *.eww
+*.ewd
+Libraries/
+Debug/
+.settings/
+Utilities/
+*.ld
+*.project
+*.cproject
+STM32F4-Discovery_FW_V1.1.0/
