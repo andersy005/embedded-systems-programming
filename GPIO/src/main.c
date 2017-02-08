@@ -4,6 +4,12 @@
 
 GPIO_InitTypeDef GPIO_LED;
 
+void Delay(__IO uint32_t nCount){
+
+	while(nCount--){
+
+	}
+}
 /* Private macro */
 /* Private variables */
 /* Private function prototypes */
@@ -18,7 +24,7 @@ GPIO_InitTypeDef GPIO_LED;
 */
 int main(void)
 {
-  int i = 0;
+
 
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
@@ -29,12 +35,16 @@ int main(void)
 
   GPIO_Init(GPIOD, &GPIO_LED);
 
-  GPIO_WriteBit(GPIOD, GPIO_Pin_12, Bit_SET);
 
 
 
   while (1)
   {
-	i++;
+
+	  GPIO_WriteBit(GPIOD, GPIO_Pin_12, Bit_SET);
+	  Delay(16800000);
+	  GPIO_WriteBit(GPIOD, GPIO_Pin_12, Bit_RESET);
+	  Delay(16800000);
+
   }
 }
