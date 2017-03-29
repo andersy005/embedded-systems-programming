@@ -68,3 +68,8 @@ Utilities/
 STM32F4-Discovery_FW_V1.1.0/
 
 *.elf.launch
+
+*.zip
+/en.stms-stm32068
+*.doc
+*.docx
