@@ -35,6 +35,11 @@ __iar_program_start
         
         SECTION .text : CODE (2)
 
+
+
+
+
+
 main    NOP
         ;initialize a 32-bit register with data moving instructions
         mov    r0,#4

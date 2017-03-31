@@ -2315,10 +2315,7 @@
     </settings>
   </configuration>
   <file>
-    <name>$PROJ_DIR$\asm011.asm</name>
-  </file>
-  <file>
-    <name>$PROJ_DIR$\sintable.asm</name>
+    <name>$PROJ_DIR$\..\Lab4\asm010.asm</name>
   </file>
 </project>
 
