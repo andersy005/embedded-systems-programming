@@ -104,7 +104,7 @@ After running the program, you may press the blue button to turn on and off of f
 7.	Rebuild, Download and Debug your project:
 Before running the function, you should connect PD12 to PA0 and use two probes of an oscilloscope to measure the signals at PD12 and PD13 simultaneously. After running the program, you can watch the waveforms of both signals with the oscilloscope. The time delay from the edge of PD12 to the edge of PD13 is the response time of the interrupt handler. Assuming that system clock is 168 MHz, find the number of cycles corresponding to the time delay.
 
-   **Delay time = _____________ ns	           Number of system cycles = _____________**
+   **Delay time = 272 ns	           Number of system cycles = 45**
 
 
 Report:
@@ -117,12 +117,9 @@ As the part of the report, you should provide description of the features, confi
 •	BUTTON_MODE_GPIO: Button will be used as simple IO
 •	BUTTON_MODE_EXTI: Button will be connected to EXTI line with interrupt generation capability 
 
-NVIC_IRQChannel
-Defines the Button EXTI interrupt as the interrupt to set settings for 
- NVIC_IRQChannelPreemptionPriority
-The Button EXTI interrupt is to the lowest priority.
-NVIC_IRQChannelSubPriority
-With Interrupt of the same type, the Button EXTI is assigned the lowest sub priority. NVIC_IRQChannelCmd
-The Button EXTI interrupt is enabled 
+- NVIC_IRQChannel: Defines the Button EXTI interrupt as the interrupt to set settings for 
+- NVIC_IRQChannelPreemptionPriority: The Button EXTI interrupt is set to the lowest priority.
+- NVIC_IRQChannelSubPriority: With Interrupt of the same type, the Button EXTI is assigned the lowest sub priority. 
+- NVIC_IRQChannelCmd: The Button EXTI interrupt is enabled 
 
 
