@@ -15,8 +15,8 @@ In the test 1), the blue button of the evaluation kit STM32F4Discovery is used t
 
 In the test 2) the output PD12, or GPIOD-pin12, is connected to PA0. PD12 is programmed to generate pulse periodically which is input to PA0 to generate interrupt. The interrupt service routine for EXTI0 is to toggle the output of the pin PD13 (GPIOD-pin13). By measuring the time delay from the rising edge of PD12 to the rising/falling edge of PD13 with an oscilloscope we can obtain the response time of the interrupt service routine.
 
-![](circ.PNG)
-![](circ1.PNG)   
+![](circ.png)
+![](circ1.png)   
 Fig. 1 the circuit scheme of the blue button and LEDs
 
 
