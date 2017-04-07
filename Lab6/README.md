@@ -23,6 +23,25 @@ Answer the following questions for each function:
 a.	What operations are completed?
 b.	Where is the function called in the project?
 c.	Is the function the part of an interrupt service routine?
+
+
+### ```int main(void)```
+
+- Operations Completed: Initialization of LEDs and 
+- where is the function called in the project?: The main() function is never called in a program .
+- Is the function the part of an interrupt service routine? No
+
+### ```void Delay(__IO uint32_t nTime)```
+checks to see if the delay time is 0. If not SysTick makes all changes
+Called inside the while loop in the main function
+NO
+
+### ```void TimingDelay_Decrement(void)```
+
+SysTick Handler
+Called by the SysTick
+Yes
+
 3.	Understand the interrupt of SysTick Timer and explain 
 a.	the interrupt configuration for SysTick timer, 
 b.	the time period at which the SysTick timer generates interrupts
