@@ -114,12 +114,22 @@ STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_EXTI);
 The function can be found in the source code module stm32f4_discovery.c. 
 As the part of the report, you should provide description of the features, configuration of NVIC and EXTI controller of the function.
 
-•	BUTTON_MODE_GPIO: Button will be used as simple IO
-•	BUTTON_MODE_EXTI: Button will be connected to EXTI line with interrupt generation capability 
 
+The two arguments to STM_EVAL_PBInit are defined and initialized as:
+
+- BUTTON_USER which is initialized to 0
+- BUTTON_MODE can have one of the following two values:
+  - BUTTON_MODE_GPIO: Button will be used as simple IO and is initialized as 0
+  - BUTTON_MODE_EXTI: Button will be connected to EXTI line with interrupt generation capability and is initialized as 1
+
+
+When the BUTTON_USER is initialized to BUTTON_MODE_EXTI, the following EXternal Interrupt configurations are set up: 
 - NVIC_IRQChannel: Defines the Button EXTI interrupt as the interrupt to set settings for 
 - NVIC_IRQChannelPreemptionPriority: The Button EXTI interrupt is set to the lowest priority.
 - NVIC_IRQChannelSubPriority: With Interrupt of the same type, the Button EXTI is assigned the lowest sub priority. 
 - NVIC_IRQChannelCmd: The Button EXTI interrupt is enabled 
+
+
+Otherwise, the Button is used as a GPIO input.
 
 
