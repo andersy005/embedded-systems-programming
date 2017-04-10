@@ -39,8 +39,13 @@ static __IO uint32_t TimingDelay;
 
 /* Private function prototypes -----------------------------------------------*/
 void Delay(__IO uint32_t nTime);
+uint32_t CycleNum(uint32_t N);
+float Fun1(uint16_t Num);
 
 /* Private functions ---------------------------------------------------------*/
+static __IO uint32_t TimingDelay, SysTickCnt = 0;
+uint32_t SysTickLoadVal, CycleNumVal, NRP = 10;
+
 
 /**
   * @brief   Main program
@@ -92,7 +97,10 @@ int main(void)
        - Reload Value is the parameter to be passed for SysTick_Config() function
        - Reload Value should not exceed 0xFFFFFF
    */
-  if (SysTick_Config(SystemCoreClock / 1000))
+  // if (SysTick_Config(SystemCoreClock / 1000))
+  SysTickLoadVal = SystemCoreClock / 1000; 
+  if (SysTick_Config(SysTickLoadVal))  
+
   { 
     /* Capture error */ 
     while (1);
@@ -105,7 +113,7 @@ int main(void)
     STM_EVAL_LEDToggle(LED6);
 
     /* Insert 50 ms delay */
-    Delay(50);
+    //Delay(50);
 
     /* Toggle LED4 and LED5 */
     STM_EVAL_LEDToggle(LED4);
@@ -113,6 +121,8 @@ int main(void)
 
     /* Insert 100 ms delay */
     Delay(100);
+
+    CycleNumVal = CycleNum(NRP);
   }
 }
 
@@ -139,7 +149,37 @@ void TimingDelay_Decrement(void)
   { 
     TimingDelay--;
   }
+
+  SysTickCnt++;        //Increment interrupts
 }
+
+
+uint32_t CycleNum(uint32_t N)
+{
+  uint32_t Cnt0, Cnt1, SysTickCnt0, tmp;
+
+  SysTickCnt0 = SysTickCnt;
+  Cnt0 = SysTick->VAL;
+  //Add the function to be evaluated below.
+  Fun1(N);
+  //End of the function to be evaluated.
+  Cnt1 = SysTick->VAL;
+  tmp = (SysTickCnt - SysTickCnt0)*SysTickLoadVal + Cnt0-Cnt1;
+  return tmp;
+}
+
+float Fun1(uint16_t Num)
+{
+  uint16_t i;
+  float x=0, y=0;
+  for (i=0; i<Num; i++)
+  {
+    x += 1;
+    y +=x*x;
+  }
+  return y;
+}
+
 
 #ifdef  USE_FULL_ASSERT
 
